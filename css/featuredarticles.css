@@ -1,0 +1,116 @@
+
+.featured-article-big {
+  background: url("https://placehold.it/600?text=Big+Feature") no-repeat center center;
+  background-size: cover;
+  height: 28.125rem;
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0.625rem;
+
+}
+/* border-right: 0.0625rem solid #fefefe; */
+
+.featured-article-big .featured-article-text .featured-article-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  line-height: 1.875rem;
+  background-color: rgba(43,43,43,0.7);
+}
+
+.featured-article-big .featured-article-text .featured-article-title .author {
+  font-size: 1.125rem;
+}
+
+.featured-article-big .featured-article-text p {
+  color: #fefefe;
+  margin-bottom: 0;
+}
+
+.featured-article-small-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 28.125rem;
+}
+
+.featured-article-small-container :last-child .featured-article-small {
+  border-bottom: 0;
+}
+
+.featured-article-small {
+  background: url("https://placehold.it/200?text=Small+Feature") no-repeat center center;
+  height: 9.375rem;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0.625rem;
+
+}
+
+/* border-bottom: 0.0625rem solid #fefefe; */
+
+.featured-article-small :last-child {
+  border-bottom: 0;
+}
+
+.featured-article-small .featured-article-text .featured-article-title {
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 0.9375rem;
+  max-height: 2.8125rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: rgba(43,43,43,0.7);
+}
+
+.featured-article-small .featured-article-text p {
+  color: #fefefe;
+  margin-bottom: 0;
+}
+
+/* background-color: #fefefe;
+padding: 0.625rem;
+*/
+.featured-article-links-container {
+
+  padding: 1em;
+  max-height: 28.125rem;
+  overflow-y: scroll;
+}
+
+/* padding: 0.625rem; */
+.featured-article-links,
+.featured-article-links-header {
+
+  border-bottom: 0.0625rem solid #e6e6e6;
+}
+
+.featured-article-links:last-child,
+.featured-article-links-header:last-child {
+  border-bottom: 0;
+}
+
+.featured-article-links-header {
+  font-weight: 600;
+  text-transform: uppercase;
+}
