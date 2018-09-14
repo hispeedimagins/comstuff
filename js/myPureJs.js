@@ -12,6 +12,8 @@ var tagOrComment = new RegExp(
     + tagBody
     + ')>',
     'gi');
+
+    //Simole remove tag function
 function removeTags(html) {
   var oldHtml;
   do {
@@ -32,6 +34,7 @@ function getParameterByName(name, url) {
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
+//Convert date to a viewable one, hooman friendly.
 function convertDate(date) {
   var dat = new Date(date + "+0000");
   var datn = new Date();
@@ -46,11 +49,12 @@ function checkForLessThanTen(data) {
   return data < 10 ? "0" + data : data;
 }
 
+//Make the profile image url
 function getProfileImageUrl(username){
   return "https://cdn.steemitimages.com/u/"+username+"/avatar/medium";
 }
 
-
+//Init loadie
 $('#loadiehere').loadie();
 $('#loadiehere').loadie(loadieStartPercent);
 

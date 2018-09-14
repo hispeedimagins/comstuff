@@ -1,49 +1,4 @@
-// 'use strict';
-//
-// function ArticleHolder(props) {
-//   console.log("rendering artile");
-//   let jsmeta = JSON.parse(props.article.json_metadata);
-//   console.log(jsmeta);
-//   let fimage = "";
-//   if(jsmeta.image){
-//       fimage = jsmeta.image[0];
-//   } else if(jsmeta.thumbnail){
-//       fimage = jsmeta.thumbnail;
-//   }
-//   var divStyle = {
-//     //color: 'white',
-//     background: 'url(' + fimage + ') no-repeat center center'
-//     //WebkitTransition: 'all', // note the capital 'W' here
-//     //msTransition: 'all' // 'ms' is the only lowercase vendor prefix
-//   };
-//   let classname = "featured-article-small";
-//   if(props.usebig){
-//     classname = "featured-article-big";
-//   }
-//   return (
-//
-//     <a key={props.article.permlink} href="#">
-//       <div className={classname}
-//         style={divStyle}
-//       >
-//         <div className="featured-article-tag">
-//           <span className="label">in {props.article.category}</span>
-//         </div>
-//         <div className="featured-article-text">
-//           <p className="featured-article-title">{props.article.title} <span className="author">by {props.article.author}</span></p>
-//
-//
-//
-//         </div>
-//       </div>
-//     </a>
-//
-//   );
-// }
-
-// import extractContent from 'js/ExtractContent';
-// import { immutableAccessor } from 'js/Accessors';
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -75,12 +30,6 @@ var ArticleHolder = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-
-      // if (this.state.liked) {
-      //   return 'You liked this.';
-      // }
-      //style={{marginRight: spacing + 'em'}}
-      //background: url("https://placehold.it/600?text=Big+Feature") no-repeat center center cover;
       console.log("rendering artile");
       var jsmeta = JSON.parse(this.props.article.json_metadata);
       console.log(jsmeta);
@@ -90,9 +39,6 @@ var ArticleHolder = function (_React$Component) {
       } else if (jsmeta.thumbnail) {
         fimage = jsmeta.thumbnail;
       }
-      //let backg = {background:" url("+fimage+") no-repeat center center cover"};
-      //console.log(backg);
-
       var divStyle = {
         //color: 'white',
         background: 'url(' + fimage + ') no-repeat center center'
@@ -146,14 +92,3 @@ var ArticleHolder = function (_React$Component) {
 
   return ArticleHolder;
 }(React.Component);
-
-//<p>{this.props.article.body.substring(0,300)}</p>
-// <button className="square" onClick={props.onClick}>
-//   {props.value}
-// </button>
-// if(props.usebig){
-//   <a href="#">Read More ></a>
-// }
-
-// let domContainer = document.querySelector('#shit');
-// ReactDOM.render(<LikeButton />, domContainer);

@@ -8,11 +8,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-//import extractContent from '/js/ExtractContent';
-//import { immutableAccessor } from '/js/Accessor';
-//'use strict';
-
-
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
 
@@ -25,44 +20,21 @@ var App = function (_React$Component) {
       usenewlayout: _this.props.usenewlayout,
       numbergot: _this.props.numbergot,
       usebig: false };
-    // steem.api.getDiscussionsByTrending(query, function(err, result) {
-    //   if(result){
-    //     this.setState({articles:result,numbergot:20,usebig:true});
-    //      AddTheStuff(result);
-    //
-    //   }
-    // });
-    //this.setItsState(this.props);
-    //this.AddTheStuff(this.props.articles);
+
     return _this;
   }
 
   _createClass(App, [{
     key: 'AddTheStuff',
     value: function AddTheStuff(result) {
-      //console.log(result);
-      //console.log(this.state.numbergot);
-
       var articlebig = document.querySelector('#articlebig');
       var articlesmall = document.querySelector('#articlesmall');
       var usesh = articlesmall;
       var usebig = false;
       for (var i = 0; i < result.length; i++) {
-        // if(i == 0){
-        //   usesh = articlebig;
-        //   usebig = true;
-        //   this.renderArticle(result[i],usebig,usesh,i);
-        // } else{
-        //   usesh = articlesmall;
-        //   usebig = false;
-        //   this.renderOtherOnes(result[i],usebig,usesh,i);
-        // }
-        //var usesh = (i === 0) ? articlebig : articlesmall;
 
         console.log(usebig);
         console.log(usesh);
-        //console.log(result[i]);
-        //return(ReactDOM.render());
       }
     }
   }, {
@@ -161,6 +133,13 @@ var App = function (_React$Component) {
       //console.log(article);
       //let descrip = extractContent(immutableAccessor, article.body).desc;
       //console.log(descrip);
+
+
+      //for returning we first map all the articles,
+      //then for each one we decide who called it and
+      //then return a layout for that one. 
+      //It would have been efficient a different way but I was 
+      //just learning and did this. 
       return this.props.articles.map(function (article) {
         console.log("rendering artile");
         var jsmeta = JSON.parse(article.json_metadata);
@@ -178,18 +157,24 @@ var App = function (_React$Component) {
           payout = article.pending_payout_value;
         }
 
+        //for calculating the rep using steems js file
         var aure = repLog10(article.author_reputation);
+
+        //we use this to set the style if needed as the image background. Not being used atm.
         var divStyle = {
           //color: 'white',
           background: 'url(' + fimage + ') no-repeat center center'
           //WebkitTransition: 'all', // note the capital 'W' here
           //msTransition: 'all' // 'ms' is the only lowercase vendor prefix
         };
+
+        //class name changes according to the layout, if big or small.
         var classname = "themePrimaryShadow featured-article-small";
         if (usebigs) {
           classname = "themePrimaryShadow featured-article-big";
         }
 
+        //The article url is put into this variable and used throughout
         var arturl = "article.html?username=" + article.author + "&tag=" + article.category + "&permlink=" + article.permlink; // encodeURI(article.category+"/@"+article.author+"/"+article.permlink);
 
 
@@ -402,47 +387,6 @@ var App = function (_React$Component) {
             )
           );
         }
-
-        // if(useNewLayout){
-        //   return(
-        //     <div key={article.id} className="grid-x grid-margin-x themePrimaryShadow themeMarginOnlyTop themePrimaryglassfull themepadding">
-        //       <div className="large-6 cell">
-        //         <p><img src={fimage} alt="image for article" alt="article preview image"/></p>
-        //       </div>
-        //       <div className="large-6 cell">
-        //         <h5><a href={arturl}>{article.title}</a></h5>
-        //          <p>
-        //            <span><i className="fi-torso"> By {article.author} &nbsp;&nbsp;</i></span>
-        //            <span><i className="fi-calendar"> {convertDate(article.created)} &nbsp;&nbsp;</i></span>
-        //            <span><i className="fi-comments"> {article.children}</i></span>
-        //            </p>
-        //           <p>{mydesc}</p>
-        //       </div>
-        //     </div>
-
-        //   );
-        // } else{
-        //   return (
-        //     <div key={article.id} className="cell">
-        //       {/* <a key={article.permlink} href="#"> */}
-        //         <div className={classname}
-        //           style={divStyle}
-        //         >
-        //           <div className="featured-article-tag">
-        //             <span className="label">in {article.category}</span>
-        //           </div>
-        //           <div className="featured-article-text">
-        //             <p className="featured-article-title themepadding">
-        //             <a href={arturl}>{article.title}</a>  
-        //             <span className="author">by {article.author}</span></p>
-
-
-        //           </div>
-        //         </div>
-        //       {/* </a> */}
-        //     </div>
-        //     );
-        // }
       })
       // <a href="#0" class="button" onClick={() => this.checkstate() }>
       //   {this.state.liked.toString()}

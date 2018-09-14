@@ -1,5 +1,5 @@
 'use strict';
-
+//not used. Will be used later. I think, this was from the example.
 class LikeButton extends React.Component {
   constructor(props) {
     super(props);

@@ -19,6 +19,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 //import HtmlReady from 'shared/HtmlReady';
 //import tt from 'counterpart';
 
+//The markdown viewer from steem. This is also from condenser. Uses the same code with slight modifications. 
+
 var remarkableM = new Remarkable({
     html: true, // remarkable renders first then sanitize runs...
     breaks: true,

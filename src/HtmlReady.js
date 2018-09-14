@@ -5,6 +5,10 @@
 //import proxifyImageUrl from 'app/utils/ProxifyUrl';
 //import * as Phishing from 'app/utils/Phishing';
 
+//This code is the same as used by steem to begin linking the data aka the article.
+//This is where they parse and chose which links are displayed and which are hidden for a safe
+//experience. 
+
 const getPhishingWarningMessage = () => "phishy message";
 const getExternalLinkWarningMessage = () =>
     "External link warning";

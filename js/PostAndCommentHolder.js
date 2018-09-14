@@ -27,6 +27,9 @@ var PostAndCommentHolder = function (_React$Component) {
         return _this;
     }
 
+    //Render an article or a comment.
+
+
     _createClass(PostAndCommentHolder, [{
         key: 'render',
         value: function render() {

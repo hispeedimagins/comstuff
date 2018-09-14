@@ -18,6 +18,7 @@ var _PropTypes = PropTypes,
     number = _PropTypes.number;
 
 /** Lots of iframes in a post can be very slow.  This component only inserts the iframe when it is actually needed. */
+//This too has been taken from steems condenser.
 
 var YoutubePreview = function (_React$Component) {
     _inherits(YoutubePreview, _React$Component);

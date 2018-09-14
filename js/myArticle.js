@@ -1,3 +1,4 @@
+//Starts the get article process.
 var username = getParameterByName('username');
 var tag = getParameterByName('tag');
 var permlink = getParameterByName('permlink');

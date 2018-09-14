@@ -1,3 +1,4 @@
+//react element used for a header. So it is common all around.
 class Header extends React.Component{
     constructor(props){
         super(props);

@@ -14,6 +14,7 @@ class PostAndCommentHolder extends React.Component{
 
     
 
+      //Render an article or a comment.
       render(){
 
                 

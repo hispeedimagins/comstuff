@@ -9,6 +9,8 @@
 //import HtmlReady from 'shared/HtmlReady';
 //import tt from 'counterpart';
 
+//The markdown viewer from steem. This is also from condenser. Uses the same code with slight modifications. 
+
 const remarkableM = new Remarkable({
     html: true, // remarkable renders first then sanitize runs...
     breaks: true,

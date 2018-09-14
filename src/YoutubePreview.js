@@ -6,6 +6,7 @@
 const { string, number } = PropTypes;
 
 /** Lots of iframes in a post can be very slow.  This component only inserts the iframe when it is actually needed. */
+//This too has been taken from steems condenser.
 class YoutubePreview extends React.Component {
     static propTypes = {
         youTubeId: string.isRequired,

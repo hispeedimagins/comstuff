@@ -1,3 +1,6 @@
+
+//This is where we the trending, new, hot and other feeds using the steem library. The tag is filtered to comedyopenmic.
+//The limit is set to 20. Pagination will be added later.
 var query = {"tag":"comedyopenmic","limit":"20"};
 steem.api.getDiscussionsByTrending(query, function(err, result) {
   $('#loadiehere').loadie(0.5);
