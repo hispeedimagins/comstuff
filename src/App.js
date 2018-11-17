@@ -4,7 +4,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { articles: this.props.articles,
-      usenewlayout:this.props.usenewlayout,
+    usenewlayout:this.props.usenewlayout,
     numbergot:this.props.numbergot,
      usebig:false };
 
@@ -91,6 +91,19 @@ class App extends React.Component {
     console.log("state set");
   }
 
+  shouldComponentUpdate(nextProps, nextState){
+    console.log("ns ",nextProps,nextState);
+    if(nextProps.articles.length > this.state.articles.length){
+      this.setState({ articles: nextProps.articles,
+        usenewlayout:nextProps.usenewlayout,
+        numbergot:nextProps.numbergot,
+         usebig:false });
+         return true;
+      
+    }
+    return false;
+  }
+
   
   render() {
     // if (this.state.liked) {
@@ -110,7 +123,11 @@ class App extends React.Component {
     //It would have been efficient a different way but I was 
     //just learning and did this. 
     return (
-      this.props.articles.map(function(article){
+      this.state.articles.map(function(article){
+        //check for weird cases where article was null
+        if(!article){
+          return;
+        }
         console.log("rendering artile");
         let jsmeta = JSON.parse(article.json_metadata);
         //console.log(jsmeta);
@@ -146,12 +163,13 @@ class App extends React.Component {
 
         //The article url is put into this variable and used throughout
         var arturl = "article.html?username="+article.author +"&tag="+article.category +"&permlink="+article.permlink;// encodeURI(article.category+"/@"+article.author+"/"+article.permlink);
+        //author url
+        var authurl = "profile.html?username="+article.author;// encodeURI(article.category+"/@"+article.author+"/"+article.permlink);
 
-
-
+        //add the key to make them unique
         if(useNewLayout == "trending"){
           return(
-            <article className="mini-post">
+            <article key={article.id} className="mini-post">
 											<header>
 												<h3><a href={arturl}>{article.title}</a></h3>
                         <h6><a>By {article.author} ({aure})</a></h6>
@@ -165,7 +183,7 @@ class App extends React.Component {
         } else if(useNewLayout == "hot"){
 
           return(
-            <li>
+            <li key={article.id}>
 										<article>
 											<header>
 												<h3><a href={arturl}>{article.title}</a></h3>
@@ -179,15 +197,15 @@ class App extends React.Component {
 
         } else if(useNewLayout == "created"){
           return(
-            <article className="post">
+            <article key={article.id} className="post">
 								<header>
 									<div className="title">
 										<h2><a href={arturl}>{article.title}</a></h2>
-										<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+										{/* <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p> */}
 									</div>
 									<div className="meta">
 										<time className="published" dateTime={convertDate(article.created)}>{convertDate(article.created)}</time>
-										<a href="#" className="author"><span className="name">{article.author} ({aure})</span><img src={getProfileImageUrl(article.author)} alt="" /></a>
+										<a href={authurl} className="author"><span className="name">{article.author} ({aure})</span><img src={getProfileImageUrl(article.author)} alt="" /></a>
 									</div>
 								</header>
 								<a href={arturl} className="image featured"><img src={fimage} alt="" /></a>

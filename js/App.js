@@ -122,6 +122,19 @@ var App = function (_React$Component) {
       console.log("state set");
     }
   }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      console.log("ns ", nextProps, nextState);
+      if (nextProps.articles.length > this.state.articles.length) {
+        this.setState({ articles: nextProps.articles,
+          usenewlayout: nextProps.usenewlayout,
+          numbergot: nextProps.numbergot,
+          usebig: false });
+        return true;
+      }
+      return false;
+    }
+  }, {
     key: 'render',
     value: function render() {
       // if (this.state.liked) {
@@ -140,7 +153,10 @@ var App = function (_React$Component) {
       //then return a layout for that one. 
       //It would have been efficient a different way but I was 
       //just learning and did this. 
-      return this.props.articles.map(function (article) {
+      return this.state.articles.map(function (article) {
+        if (!article) {
+          return;
+        }
         console.log("rendering artile");
         var jsmeta = JSON.parse(article.json_metadata);
         //console.log(jsmeta);
@@ -176,12 +192,13 @@ var App = function (_React$Component) {
 
         //The article url is put into this variable and used throughout
         var arturl = "article.html?username=" + article.author + "&tag=" + article.category + "&permlink=" + article.permlink; // encodeURI(article.category+"/@"+article.author+"/"+article.permlink);
+        var authurl = "profile.html?username=" + article.author; // encodeURI(article.category+"/@"+article.author+"/"+article.permlink);
 
 
         if (useNewLayout == "trending") {
           return React.createElement(
             'article',
-            { className: 'mini-post' },
+            { key: article.id, className: 'mini-post' },
             React.createElement(
               'header',
               null,
@@ -228,7 +245,7 @@ var App = function (_React$Component) {
 
           return React.createElement(
             'li',
-            null,
+            { key: article.id },
             React.createElement(
               'article',
               null,
@@ -273,7 +290,7 @@ var App = function (_React$Component) {
         } else if (useNewLayout == "created") {
           return React.createElement(
             'article',
-            { className: 'post' },
+            { key: article.id, className: 'post' },
             React.createElement(
               'header',
               null,
@@ -288,11 +305,6 @@ var App = function (_React$Component) {
                     { href: arturl },
                     article.title
                   )
-                ),
-                React.createElement(
-                  'p',
-                  null,
-                  'Lorem ipsum dolor amet nullam consequat etiam feugiat'
                 )
               ),
               React.createElement(
@@ -305,7 +317,7 @@ var App = function (_React$Component) {
                 ),
                 React.createElement(
                   'a',
-                  { href: '#', className: 'author' },
+                  { href: authurl, className: 'author' },
                   React.createElement(
                     'span',
                     { className: 'name' },
