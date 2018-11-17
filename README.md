@@ -6,4 +6,6 @@ As of now it only does read operations. Write operations will come soon.
 
 It can be used for rapid deployment of a new product using a tag or by an individual for showcasing their blog to the world.
 
+Written using html, css, javascript and react for reusable components.
+
 Thank you for reading. 
