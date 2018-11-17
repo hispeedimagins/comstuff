@@ -62,7 +62,7 @@ var PostAndCommentHolder = function (_React$Component) {
 
             var divStyle = {
                 //color: 'white',
-                paddingLeft: margin + 'em'
+                paddingLeft: margin == 1 ? "initial" : margin - 1 + 'em'
                 //WebkitTransition: 'all', // note the capital 'W' here
                 //msTransition: 'all' // 'ms' is the only lowercase vendor prefix
             };
@@ -72,6 +72,13 @@ var PostAndCommentHolder = function (_React$Component) {
                 visibility: 'collapse'
                 //WebkitTransition: 'all', // note the capital 'W' here
                 //msTransition: 'all' // 'ms' is the only lowercase vendor prefix
+            };
+
+            var jus = {
+                mozJustifyContent: "-moz-flex-start",
+                webkitJustifyContent: "-webkit-flex-start",
+                msJustifyContent: "-ms-flex-start",
+                justifyContent: "flex-start"
             };
 
             var payout = arts.total_payout_value;
@@ -88,49 +95,28 @@ var PostAndCommentHolder = function (_React$Component) {
                         'article',
                         { className: 'post themeMarginOnlyTop' },
                         React.createElement(
-                            'header',
-                            null,
+                            'div',
+                            { className: 'meta' },
                             React.createElement(
-                                'div',
-                                { style: collapse, className: 'title' },
-                                React.createElement(
-                                    'h2',
-                                    null,
-                                    React.createElement(
-                                        'a',
-                                        { href: '#' },
-                                        arts.title
-                                    )
-                                ),
-                                React.createElement(
-                                    'p',
-                                    null,
-                                    'More shit to add over here'
-                                )
+                                'time',
+                                { className: 'published', dateTime: arts.created },
+                                convertDate(arts.created)
                             ),
                             React.createElement(
-                                'div',
-                                { className: 'meta' },
+                                'a',
+                                { href: '#', className: 'author', style: jus },
                                 React.createElement(
-                                    'time',
-                                    { className: 'published', dateTime: arts.created },
-                                    convertDate(arts.created)
+                                    'span',
+                                    { className: 'name' },
+                                    arts.author,
+                                    ' (',
+                                    aure,
+                                    ')'
                                 ),
-                                React.createElement(
-                                    'a',
-                                    { href: '#', className: 'author' },
-                                    React.createElement(
-                                        'span',
-                                        { className: 'name' },
-                                        arts.author,
-                                        ' (',
-                                        aure,
-                                        ')'
-                                    ),
-                                    React.createElement('img', { src: getProfileImageUrl(arts.author), alt: '' })
-                                )
+                                React.createElement('img', { src: getProfileImageUrl(arts.author), alt: '' })
                             )
                         ),
+                        React.createElement('hr', null),
                         contentbody,
                         React.createElement(
                             'footer',

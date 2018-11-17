@@ -45,9 +45,10 @@ class PostAndCommentHolder extends React.Component{
       
                  var lik = 0;
 
+                 //if the margin is only one we shall use initial as the padding, this is the correct behaviour
                  var divStyle = {
                     //color: 'white',
-                    paddingLeft: margin+'em'
+                    paddingLeft: (margin == 1) ? "initial": (margin - 1)+'em'
                     //WebkitTransition: 'all', // note the capital 'W' here
                     //msTransition: 'all' // 'ms' is the only lowercase vendor prefix
                   };
@@ -57,6 +58,14 @@ class PostAndCommentHolder extends React.Component{
                     visibility: 'collapse'
                     //WebkitTransition: 'all', // note the capital 'W' here
                     //msTransition: 'all' // 'ms' is the only lowercase vendor prefix
+                  };
+
+                  //for making the flex to the start
+                  var jus = {
+                    mozJustifyContent: "-moz-flex-start",
+                    webkitJustifyContent: "-webkit-flex-start",
+                    msJustifyContent: "-ms-flex-start",
+                    justifyContent: "flex-start",
                   };
 
                   let payout = arts.total_payout_value;
@@ -70,23 +79,20 @@ class PostAndCommentHolder extends React.Component{
                 return(
                     <div style={divStyle} key={arts.id} >
                          <article className="post themeMarginOnlyTop">
-                           <header>
-                              <div style={collapse} className="title">
-                                  <h2><a href="#">{arts.title}</a></h2>
-                                  <p>More shit to add over here</p>
-                              </div>
-                              <div className="meta">
-                                 <time className="published" dateTime={arts.created}>{convertDate(arts.created)}</time>
-                                <a href="#" className="author">
+                            {/* the old bulky header for comments is replaced with this one */}
+                            <div className="meta">
+                                <time className="published" dateTime={arts.created}>{convertDate(arts.created)}</time>
+                                <a href="#" className="author" style={jus}>
                                     <span className="name">{arts.author} ({aure})</span>
                                     <img src={getProfileImageUrl(arts.author)} alt="" />
                                 </a>
-                              </div>
-                            </header>
+                            </div>
+                            <hr/>
                                          {/* <span class="image featured"><img src="images/pic01.jpg" alt="" /></span> */}
                             {contentbody}
                             <footer>
                                  <ul className="stats">
+                                 
                                  <li><a href="#" className="icon fa-dollar payoutanchor">{payout}</a></li>
                                      <li><a href="#" className="icon fa-heart">{arts.net_votes}</a></li>
                                      <li><a href="#" className="icon fa-comment">{arts.children}</a></li>
