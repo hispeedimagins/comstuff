@@ -73,11 +73,13 @@
       </style>
 
 
-<div id="loadiehere">
-  <div id="wrapper">
+<div>
+    <div id="loadiehere"></div>
     <div id="headercomeshere">
        
-    </div>
+      </div>
+  <div id="wrapper">
+    
          
           
          
@@ -93,18 +95,18 @@
             <!-- Intro -->
 							<section id="intro">
                 
-								<a href="#" class="logo">
+								<!-- <a href="#" class="logo">
                     <img class="themePrimaryShadow" src="https://steemitimages.com/DQmXitsGZR1phB7qyDUdkR35VZRrScSPvfaXcNMCCXZky83/giphy.gif" alt="Comedy Open Mic logo"/>
                 </a>
 								<header>
 									<h2>Comedy Open Mic</h2>
                   <p>We are funny. Screw you.</p>
                   <p class="copyright">With lots of laughs from comedy open mic. We need an engineer to put the mic back now</p>    
-								</header>
+								</header> -->
               </section>
               
 
-              <section>
+              <section id="trendingSection">
                   <div class="makepageheadingnosides">
                       <h3 class="makeFontSegoe">Trending</h3>
                       <hr class="thememakehrprimarycomp thememakehrnormal"/>
@@ -113,22 +115,23 @@
                 </div>
               </section>
 
-              <section>
+              <section id="hotSection">
                   <div class="makepageheadingnosides">
                       <h3 class="makeFontSegoe">Hot (Just baked)</h3>
                       <hr class="thememakehrprimarycomp thememakehrnormal"/>
                     </div>
                   <ul id="hot" class="posts"></ul>
               </section>
-
+              
+              
 
               <!-- About -->
 							<section class="blurb">
-                  <h2>About</h2>
+                  <!-- <h2>About</h2>
                   <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod amet placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
                   <ul class="actions">
                     <li><a href="#" class="button">Learn More</a></li>
-                  </ul>
+                  </ul> -->
                 </section>
 
           </section>
@@ -139,6 +142,13 @@
     </div>
 </div>
 
+
+<section style="text-align: center;margin-bottom: 3em;">
+  <div style="display:inline-block">
+    <a class="button large" onclick="loadMoreNow()">Load more jokes.....</a>
+
+  </div>
+</section>
 
 <section class="makeTextCenter" id="footer">
     <ul class="icons">
@@ -212,7 +222,9 @@
   <script src="js/like_button.js"></script>
   <script src="js/article_holder.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/intro.js"></script>
     <script src="js/myPureJs.js"></script>
+    <script src="js/myProfile.js"></script>
         <script src="js/myjs.js"></script>
   <!-- ReactDOM.render(
   <App />,

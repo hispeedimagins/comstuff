@@ -10,6 +10,15 @@ const noImageText = '(Image not shown due to low ratings)';
 const img_proxy_prefix = 'https://steemitimages.com/';
 const loadieStartPercent = 0.2;
 
+//Change to true to use as your personal website
+const useAsPersonalWebsite = false;
+//this username will be used for the personal site, change it to yours
+const personalWebsiteUsernameSteem = "hispeedimagins";
+
+//this will be used a bit later on
+const tagToUse = "comedyopenmic";
+const tagAccountname = "comedyopenmic";
+
 $STM_Config = {
     //fb_app: config.get('facebook_app_id'),
     //steemd_connection_client: config.get('steemd_connection_client'),

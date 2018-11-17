@@ -1,51 +1,105 @@
 
 //This is where we the trending, new, hot and other feeds using the steem library. The tag is filtered to comedyopenmic.
 //The limit is set to 20. Pagination will be added later.
-var query = {"tag":"comedyopenmic","limit":"20"};
-steem.api.getDiscussionsByTrending(query, function(err, result) {
-  $('#loadiehere').loadie(0.5);
-  if(result){
-    //this.setState({articles:result,numbergot:20,usebig:true});
-     //AddTheStuff(result);
-     //let domContainer = document.querySelector('#root');
-     let articlebig = document.querySelector('#trending');
-     //let articlesmall = document.querySelector('#articlesmall');
-     //AddArticles(result);
-     ReactDOM.render(<App
-       articles = {result }
-       numbergot = {20}
-       usenewlayout="trending"
-       usebig = {true}/>,articlebig);
+var query = {"tag":tagToUse,"limit":"20"};
 
-      //  ReactDOM.render(<App
+//declare the lists used. bList is used for user website else mainList is used
+var mainList = [];
+var bList = [];
+var username;
 
-      //    articles = {result.splice(1,3) }
-      //    numbergot = {20}
-      //    usebig = {false}/>,articlesmall);
+//comes via constants.js
+//check if this is to be used as a personal website, use the personalWebsiteUsernameSteem as the username
+if(useAsPersonalWebsite){
 
+  //remove the hot and trending sections as they are not needed 
+  var sec = document.getElementById("sidebar");
+  for(var i = 0;i<sec.childNodes.length;i++){
+    var curch = sec.childNodes[i];
+    if(curch.id == "trendingSection" || curch.id == "hotSection"){
+      sec.removeChild(curch);
+    }
   }
+
+  //load the profile picture, json_metadata and render a component, these are from myProfile.js file
+  getProfile(personalWebsiteUsernameSteem);
+  var q = {"tag":personalWebsiteUsernameSteem,"limit":"20"};
+  loadcreatedP(q);
+
+} else {
+
+  //this is not a website, use normally
+  loadcreated(query);
+  getTrending();
+  getHot();
+  getProfile(tagAccountname);
+}
+//get trendring articles and rendere them
+function getTrending(){
+  steem.api.getDiscussionsByTrending(query, function(err, result) {
+    $('#loadiehere').loadie(0.5);
+    if(result){
+       let articlebig = document.querySelector('#trending');
+       ReactDOM.render(<App
+         articles = {result }
+         numbergot = {20}
+         usenewlayout="trending"
+         usebig = {true}/>,articlebig);
+  
+    }
+    });
+}
+//get hot articles and rendere them
+function getHot(){
+  steem.api.getDiscussionsByHot(query, function(err, result) {
+    $('#loadiehere').loadie(0.8);
+    let domContainer = document.querySelector('#hot');
+    ReactDOM.render(<App
+      articles = {result }
+      usenewlayout="hot"
+      numbergot = {20}
+      usebig = {false}/>,domContainer);
   });
+}
 
-steem.api.getDiscussionsByHot(query, function(err, result) {
-  $('#loadiehere').loadie(0.8);
-  let domContainer = document.querySelector('#hot');
-  ReactDOM.render(<App
-    articles = {result }
-    usenewlayout="hot"
-    numbergot = {20}
-    usebig = {false}/>,domContainer);
-});
 
-steem.api.getDiscussionsByCreated(query, function(err, result) {
-  $('#loadiehere').loadie(1);
-  let domContainer = document.querySelector('#main');
-  ReactDOM.render(<App
-    articles = {result }
-    usenewlayout="created"
-    numbergot = {20}
-    usebig = {false}/>,domContainer);
-});
 
+
+//get tag areticles created/new articles and rendere them
+function loadcreated(q){
+  $('#loadiehere').loadie(0.75);
+  steem.api.getDiscussionsByCreated(q, function(err, result) {
+    $('#loadiehere').loadie(1);
+    let domContainer = document.querySelector('#main');
+    mainList = mainList.concat(result);
+    console.log("mainlist",mainList);
+    ReactDOM.render(<App
+      articles = {mainList }
+      usenewlayout="created"
+      numbergot = {20}
+      usebig = {false}/>,domContainer);
+  });
+}
+
+function loadMoreNow(){
+  console.log("loading more");
+  //if this is a personal website we call the loadmore from the myProfile.js file and let it do the work
+  if(useAsPersonalWebsite){
+    console.log("redirecting");
+    loadMoreNowP();
+    return;
+  }
+
+  //else we continue
+  console.log("notreachedhere");
+  var a = mainList;
+  var al = a.pop();
+  //a.push(al);
+  $('#loadiehere').loadie(0.25);
+  console.log("last",al.id,mainList.length);
+  var q = {"tag":"comedyopenmic","limit":"20","start_author":al.root_author,"start_permlink":al.root_permlink};
+  loadcreated(q);
+}
 
 
 
