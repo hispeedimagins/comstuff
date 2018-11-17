@@ -1,5 +1,5 @@
 
-
+//Not in use atm I think, was used earlier.
 class ArticleHolder extends React.Component {
   constructor(props) {
     super(props);

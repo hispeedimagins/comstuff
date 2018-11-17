@@ -60,3 +60,18 @@ user-select: none;
 
 
 .loadie { z-index: 9999; }
+
+#loadiehere{
+  position: sticky !important;
+  top: 3.2em;
+  z-index: 10000000000000;
+}
+
+img{
+  width:100%;
+  height: auto;
+}
+
+.leftinc{
+  padding: 0 10em 0 10em;
+}

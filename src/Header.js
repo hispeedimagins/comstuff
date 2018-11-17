@@ -7,7 +7,6 @@ class Header extends React.Component{
     render(){
         return(
             <div>
-
                 <header id="header">
         <h1><a href="index.html">Comedy Open Mic</a></h1>
         <nav className="links">
@@ -45,8 +44,9 @@ class Header extends React.Component{
                 </li>
             </ul>
         </nav>
+        
     </header>
-
+    
     
 
 
@@ -103,7 +103,7 @@ class Header extends React.Component{
         </section>
 
     </section>
-
+                
             </div>
         );
     }
