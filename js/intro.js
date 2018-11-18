@@ -8,6 +8,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+//for loading the profile of the user as a website or a tag
 var Intro = function (_React$Component) {
     _inherits(Intro, _React$Component);
 
@@ -27,6 +28,9 @@ var Intro = function (_React$Component) {
         };
         return _this;
     }
+
+    //always update with the current props used, no state needed
+
 
     _createClass(Intro, [{
         key: "shouldComponentUpdate",

@@ -60,6 +60,7 @@ var PostAndCommentHolder = function (_React$Component) {
 
             var lik = 0;
 
+            //if the margin is only one we shall use initial as the padding, this is the correct behaviour
             var divStyle = {
                 //color: 'white',
                 paddingLeft: margin == 1 ? "initial" : margin - 1 + 'em'
@@ -74,6 +75,7 @@ var PostAndCommentHolder = function (_React$Component) {
                 //msTransition: 'all' // 'ms' is the only lowercase vendor prefix
             };
 
+            //for making the flex to the start
             var jus = {
                 mozJustifyContent: "-moz-flex-start",
                 webkitJustifyContent: "-webkit-flex-start",
@@ -86,6 +88,9 @@ var PostAndCommentHolder = function (_React$Component) {
                 payout = arts.pending_payout_value;
             }
             var aure = repLog10(arts.author_reputation);
+
+            //console.log("tags check",meta.tags);
+
 
             if (this.props.isComment) {
                 return React.createElement(
@@ -151,7 +156,7 @@ var PostAndCommentHolder = function (_React$Component) {
                                         arts.children
                                     )
                                 ),
-                                meta && meta.tags ? meta.tags.map(function (item) {
+                                meta && meta.tags && Array.isArray(meta.tags) ? meta.tags.map(function (item) {
                                     return React.createElement(
                                         'li',
                                         { key: lik++ },
@@ -260,7 +265,7 @@ var PostAndCommentHolder = function (_React$Component) {
                                         arts.children
                                     )
                                 ),
-                                meta && meta.tags ? meta.tags.map(function (item) {
+                                meta && meta.tags && Array.isArray(meta.tags) ? meta.tags.map(function (item) {
                                     return React.createElement(
                                         'li',
                                         { key: lik++ },

@@ -73,6 +73,8 @@ class PostAndCommentHolder extends React.Component{
                     payout = arts.pending_payout_value;
                 }
                 let aure = repLog10(arts.author_reputation);
+
+                //console.log("tags check",meta.tags);
                 
         
             if(this.props.isComment){
@@ -96,7 +98,7 @@ class PostAndCommentHolder extends React.Component{
                                  <li><a href="#" className="icon fa-dollar payoutanchor">{payout}</a></li>
                                      <li><a href="#" className="icon fa-heart">{arts.net_votes}</a></li>
                                      <li><a href="#" className="icon fa-comment">{arts.children}</a></li>
-                                 { meta && meta.tags ? meta.tags.map(item => <li key={lik++} ><a href="#">{item}</a></li>) : <li key={lik++} ><a href="#">{arts.category}</a></li> } 
+                                 { meta && meta.tags && Array.isArray(meta.tags) ? meta.tags.map(item => <li key={lik++} ><a href="#">{item}</a></li>) : <li key={lik++} ><a href="#">{arts.category}</a></li> } 
                                      
                                  </ul>
                             </footer>
@@ -132,7 +134,7 @@ class PostAndCommentHolder extends React.Component{
                                     <li><a href="#" className="icon fa-dollar payoutanchor">{payout}</a></li>
                                     <li><a href="#" className="icon fa-heart">{arts.net_votes}</a></li>
                                     <li><a href="#" className="icon fa-comment">{arts.children}</a></li>
-                                    { meta && meta.tags ? meta.tags.map(item => <li key={lik++} ><a href="#">{item}</a></li>) : <li key={lik++} ><a href="#">{arts.category}</a></li> } 
+                                    { meta && meta.tags && Array.isArray(meta.tags) ? meta.tags.map(item => <li key={lik++} ><a href="#">{item}</a></li>) : <li key={lik++} ><a href="#">{arts.category}</a></li> } 
                                    
                                 </ul>
                             </footer>

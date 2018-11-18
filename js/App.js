@@ -154,6 +154,7 @@ var App = function (_React$Component) {
       //It would have been efficient a different way but I was 
       //just learning and did this. 
       return this.state.articles.map(function (article) {
+        //check for weird cases where article was null
         if (!article) {
           return;
         }
@@ -192,9 +193,10 @@ var App = function (_React$Component) {
 
         //The article url is put into this variable and used throughout
         var arturl = "article.html?username=" + article.author + "&tag=" + article.category + "&permlink=" + article.permlink; // encodeURI(article.category+"/@"+article.author+"/"+article.permlink);
+        //author url
         var authurl = "profile.html?username=" + article.author; // encodeURI(article.category+"/@"+article.author+"/"+article.permlink);
 
-
+        //add the key to make them unique
         if (useNewLayout == "trending") {
           return React.createElement(
             'article',
